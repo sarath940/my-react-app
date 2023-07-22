@@ -1,5 +1,5 @@
 import "./App.css";
-import Expanses from "./components/Expanses";
+import Expanses from "./components/Expenses/Expanses";
 
 function App() {
   const expenses = [
