@@ -1,7 +1,15 @@
+import { useState } from "react";
 import "./App.css";
 import Expanses from "./components/Expenses/Expanses";
+import NewExpense from "./components/NewExpenses/NewExpense";
 
 function App() {
+  const addExpenseHandler = (expense) => {
+    setExpensesList((prevExpense) => {
+      return [expense, ...prevExpense];
+    });
+  };
+
   const expenses = [
     {
       id: "e1",
@@ -23,10 +31,12 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  const [expensesList, setExpensesList] = useState(expenses);
+
   return (
     <div>
-      <h2>Let's Get Started!</h2>
-      <Expanses expenses={expenses} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expanses expenses={expensesList} />
     </div>
   );
 }
